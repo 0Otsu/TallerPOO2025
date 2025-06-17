@@ -2,8 +2,8 @@
 import java.time.LocalDate;
 
 public class ChoferCategoria {
-    private Categoria categoria;
-    private LocalDate fechaVencimiento;
+    private final Categoria categoria;
+    private final LocalDate fechaVencimiento;
 
     public ChoferCategoria(Categoria categoria, LocalDate fechaVencimiento) {
         this.categoria = categoria;

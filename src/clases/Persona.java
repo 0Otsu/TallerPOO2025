@@ -1,7 +1,7 @@
 public abstract class Persona {
-    private long dni;
-    private String nombre;
-    private String apellido;
+    private final long dni;
+    private final String nombre;
+    private final String apellido;
 
     public Persona(long dni, String nombre, String apellido) {
         this.dni = dni;

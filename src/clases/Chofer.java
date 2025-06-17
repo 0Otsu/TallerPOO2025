@@ -2,8 +2,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Chofer extends Persona {
-    private String nroLicencia;
-    private ArrayList<ChoferCategoria> habilitaciones;
+    private final String nroLicencia;
+    private final ArrayList<ChoferCategoria> habilitaciones;
 
     public Chofer(long dni, String nombre, String apellido, String nroLicencia, Categoria categoria) {
         super(dni, nombre, apellido);
