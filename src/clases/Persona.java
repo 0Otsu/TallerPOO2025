@@ -22,6 +22,6 @@ public abstract class Persona {
     }
 
     @Override
-    public abstract String toString(); // Forzamos a las subclases a definir cómo se muestran
+    public abstract String toString(); 
 
 }
