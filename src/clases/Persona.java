@@ -21,6 +21,7 @@ public abstract class Persona {
         return apellido;
     }
 
+    @Override
     public abstract String toString(); // Forzamos a las subclases a definir cómo se muestran
 
 }
