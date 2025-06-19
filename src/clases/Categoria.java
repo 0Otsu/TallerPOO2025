@@ -1,5 +1,5 @@
 public enum Categoria {
-    MICROBUS,
+    MINIBUS,
     COLECTIVO
 
 }

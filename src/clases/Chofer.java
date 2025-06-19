@@ -24,8 +24,24 @@ public class Chofer extends Persona {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+        Chofer chofer = (Chofer) o;
+        return nroLicencia.equals(chofer.nroLicencia);
+    }
+
+    @Override
+    public int hashCode() {
+        return nroLicencia.hashCode();
+    }
+
+    @Override
     public String toString() {
         return "Chofer: " + getNombre() + " " + getApellido() + ", DNI: " + getDni() +
                 ", Licencia: " + nroLicencia + ", Habilitaciones: " + habilitaciones;
     }
+
 }
