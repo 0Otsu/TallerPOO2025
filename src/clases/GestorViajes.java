@@ -102,6 +102,7 @@ public class GestorViajes {
     public void mostrarViajesProgramados() {
         for (Viaje v : viajes) {
             System.out.println(v.toString());
+            System.out.println("");
         }
     }
 
