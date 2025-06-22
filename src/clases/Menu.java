@@ -167,8 +167,16 @@ public class Menu {
                         gestor.mostrarViajesProgramados();
                         break;
                     case 3:
-                        System.out.print("\nIngrese la patente del colectivo: ");
+                        System.out.println("Vehiculos disponibles:");
+                        for (Vehiculo veh : vehiculos) {
+                            if (veh instanceof Colectivo) {
+                                System.out.println(veh.toString());
+                            }
+                        }
+                        System.out.println();
+                        System.out.print("Ingrese la patente del colectivo: ");
                         String patente = sc.nextLine();
+                        System.out.println();
                         gestor.informarViajesDeColectivo(patente);
                         break;
                     case 4:
