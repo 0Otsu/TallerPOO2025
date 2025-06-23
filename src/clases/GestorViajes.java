@@ -1,4 +1,3 @@
-
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,15 +12,13 @@ public class GestorViajes {
 
     public void agregarViaje(Viaje nuevo) {
 
-        // ✅ 1. Validar que origen y destino no sean la misma ciudad
-        // ¿Por qué? No tiene sentido hacer un viaje de una ciudad hacia la misma
-        // ciudad.
+        // Validar que origen y destino sean distintos
+
         if (nuevo.getOrigen().equals(nuevo.getDestino())) {
             throw new IllegalArgumentException("El origen y el destino no pueden ser iguales.");
         }
-        // ✅ 2. Validar que el chofer no tenga otro viaje ese día con horarios
-        // superpuestos
-        // ¿Por qué? Un chofer no puede estar en dos lugares al mismo tiempo.
+        // Verifica que el chofer no tenga otro viaje con horarios que se superpongan
+
         for (Viaje v : viajes) {
             // Si el viaje ya existe con el mismo chofer y en la misma fecha
             if (v.getChofer().equals(nuevo.getChofer()) && v.getFecha().equals(nuevo.getFecha())) {
@@ -42,8 +39,7 @@ public class GestorViajes {
             }
         }
 
-        // ✅ 3. Validar que el vehículo no esté ocupado en otro viaje ese día
-        // ¿Por qué? El mismo vehículo no puede estar en dos viajes a la vez.
+       // Verifica que el vehículo no tenga asignado otro viaje que se superponga en horario
         for (Viaje v : viajes) {
             if (v.getVehiculo().equals(nuevo.getVehiculo()) && v.getFecha().equals(nuevo.getFecha())) {
                 // Obtenemos horarios de ambos viajes
@@ -62,13 +58,7 @@ public class GestorViajes {
             }
         }
 
-        // ✅ 4. Validar que el chofer esté habilitado para el tipo de vehículo y que la
-        // habilitación esté vigente
-        // ¿Por qué? Un chofer no puede manejar un vehículo si no tiene la categoría
-        // correspondiente o si está vencida.
-
-        // Determinar qué categoría se necesita
-        // Determinar qué categoría se necesita
+      // Verifica que el chofer tenga una habilitación vigente para el tipo de vehículo
         Categoria requerida;
 
         if (nuevo.getVehiculo() instanceof Colectivo) {
@@ -94,7 +84,7 @@ public class GestorViajes {
                     "El chofer no está habilitado o su licencia está vencida para este vehículo.");
         }
 
-        // ✅ Si pasó todas las validaciones, agregamos el viaje
+        // Si paso todas las validaciones, se agrega el viaje
         viajes.add(nuevo);
         System.out.println(" Viaje agregado correctamente.");
     }
@@ -110,6 +100,7 @@ public class GestorViajes {
         for (Viaje v : viajes) {
             if (patente.equals(v.getVehiculo().getPatente())) {
                 System.out.println(v.toString());
+                System.out.println();
             }
         }
     }
@@ -124,11 +115,17 @@ public class GestorViajes {
             }
         }
 
+        // Encabezado
+        System.out.printf("%-20s %-20s %s%n", "Nombre", "Apellido", "Viajes realizados");
+        System.out.println("---------------------------------------------------------");
+
+        // Datos 
         for (Map.Entry<Chofer, Integer> entrada : contador.entrySet()) {
             Chofer c = entrada.getKey();
-            System.out.println("Chofer: " + c.getNombre() + " " + c.getApellido()
-                    + " - Viajes realizados: " + entrada.getValue());
+            System.out.printf("%-20s %-20s %d%n",
+                    c.getNombre(), c.getApellido(), entrada.getValue());
         }
+
     }
 
 }

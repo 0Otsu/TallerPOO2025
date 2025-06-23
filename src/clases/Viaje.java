@@ -52,11 +52,14 @@ public class Viaje {
 
     @Override
     public String toString() {
-        return " Viaje: " + fecha +
-                "\n Salida: " + horarioSalida + " | Llegada: " + horarioLlegada +
-                "\n Vehículo: " + vehiculo +
-                "\n Chofer: " + chofer.getNombre() + " " + chofer.getApellido() +
-                "\n De: " + origen + " → " + destino;
+        return """
+               -----------------------------
+               Viaje: """ + fecha +
+                "\nDe: " + origen.getNombre() + " a " + destino.getNombre() +
+                "\nSalida: " + horarioSalida + " | Llegada: " + horarioLlegada +
+                "\nVehículo: " + vehiculo +
+                "\nChofer: " + chofer.getNombre() + " " + chofer.getApellido();
+
     }
 
 }
