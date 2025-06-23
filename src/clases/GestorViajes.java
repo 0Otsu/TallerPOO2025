@@ -3,12 +3,27 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Clase encargada de gestionar los viajes registrados en el sistema.
+ * Permite agregar viajes con validaciones y generar informes según los
+ * requerimientos de la empresa.
+ */
 public class GestorViajes {
     private final ArrayList<Viaje> viajes;
 
     public GestorViajes() {
         viajes = new ArrayList<>();
     }
+
+    /**
+     * Agrega un nuevo viaje al sistema realizando todas las validaciones:
+     * - Que el origen y destino sean distintos
+     * - Que el chofer y vehículo estén disponibles
+     * - Que el chofer esté habilitado para el tipo de vehículo
+     *
+     * @param nuevo el viaje a agregar
+     * @throws IllegalArgumentException si falla alguna validación
+     */
 
     public void agregarViaje(Viaje nuevo) {
 
@@ -39,7 +54,8 @@ public class GestorViajes {
             }
         }
 
-       // Verifica que el vehículo no tenga asignado otro viaje que se superponga en horario
+        // Verifica que el vehículo no tenga asignado otro viaje que se superponga en
+        // horario
         for (Viaje v : viajes) {
             if (v.getVehiculo().equals(nuevo.getVehiculo()) && v.getFecha().equals(nuevo.getFecha())) {
                 // Obtenemos horarios de ambos viajes
@@ -58,7 +74,8 @@ public class GestorViajes {
             }
         }
 
-      // Verifica que el chofer tenga una habilitación vigente para el tipo de vehículo
+        // Verifica que el chofer tenga una habilitación vigente para el tipo de
+        // vehículo
         Categoria requerida;
 
         if (nuevo.getVehiculo() instanceof Colectivo) {
@@ -89,12 +106,22 @@ public class GestorViajes {
         System.out.println(" Viaje agregado correctamente.");
     }
 
+    /**
+     * Muestra todos los viajes cargados en el sistema.
+     */
+
     public void mostrarViajesProgramados() {
         for (Viaje v : viajes) {
             System.out.println(v.toString());
             System.out.println("");
         }
     }
+
+    /**
+     * Muestra todos los viajes asignados a un colectivo según su patente.
+     *
+     * @param patente patente del colectivo a consultar
+     */
 
     public void informarViajesDeColectivo(String patente) {
         for (Viaje v : viajes) {
@@ -104,6 +131,12 @@ public class GestorViajes {
             }
         }
     }
+
+    /**
+     * Muestra un informe con la cantidad de viajes realizados por cada chofer de
+     * colectivo.
+     * Solo se cuentan viajes hechos con vehículos del tipo Colectivo.
+     */
 
     public void informarCantidadViajesPorChofer() {
         Map<Chofer, Integer> contador = new HashMap<>();
@@ -119,7 +152,7 @@ public class GestorViajes {
         System.out.printf("%-20s %-20s %s%n", "Nombre", "Apellido", "Viajes realizados");
         System.out.println("---------------------------------------------------------");
 
-        // Datos 
+        // Datos
         for (Map.Entry<Chofer, Integer> entrada : contador.entrySet()) {
             Chofer c = entrada.getKey();
             System.out.printf("%-20s %-20s %d%n",

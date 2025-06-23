@@ -3,7 +3,17 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Clase que representa la interfaz de usuario por consola.
+ * Permite al usuario interactuar con el sistema para cargar viajes y consultar
+ * informes.
+ */
 public class Menu {
+    /**
+     * Método principal que inicia el menú interactivo del sistema.
+     * Pre-carga datos y permite gestionar viajes mediante un menú por consola.
+     */
+
     public static void main(String[] args) {
         try (Scanner sc = new Scanner(System.in)) {
             GestorViajes gestor = new GestorViajes();
@@ -65,6 +75,8 @@ public class Menu {
                 try {
                     opcion = Integer.parseInt(entrada);
                     switch (opcion) {
+                        // Carga de nuevo viaje con validaciones de fecha, horario, chofer, vehículo y
+                        // ciudades
                         case 1 -> {
                             try {
                                 System.out.print("\nIngrese la fecha (YYYY-MM-DD): ");
@@ -162,6 +174,10 @@ public class Menu {
                                     System.out.println("Ciudad de destino no encontrada");
                                     break;
                                 }
+                                // Si la capacidad disponible es 0 o menos, no se puede asignar el viaje al
+                                // vehículo
+                                // Esta validación se agregó como mejora para evitar sobreasignación de asientos
+
                                 if (vehiculo.getCapacidadDisponible() <= 0) {
                                     System.out.println("x: No hay más lugares disponibles en este vehículo.");
                                     break;
@@ -177,6 +193,7 @@ public class Menu {
                         }
 
                         case 2 -> {
+                            // Muestra todos los viajes programados hasta el momento
                             System.out.println();
                             gestor.mostrarViajesProgramados();
                         }

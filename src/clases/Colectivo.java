@@ -1,3 +1,6 @@
+/**
+ * Representa un colectivo, con un atributo que indica si tiene piso doble.
+ */
 public class Colectivo extends Vehiculo {
     private final boolean pisoDoble;
 

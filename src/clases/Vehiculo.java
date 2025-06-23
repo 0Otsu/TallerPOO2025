@@ -1,3 +1,7 @@
+/**
+ * Clase abstracta que representa un vehículo general.
+ * Incluye atributos comunes como patente, capacidad total y disponible.
+ */
 public abstract class Vehiculo {
     private final String patente;
     private final int capacidad;
@@ -20,6 +24,13 @@ public abstract class Vehiculo {
     public int getCapacidadDisponible() {
         return capacidadDisponible;
     }
+
+    /**
+     * Actualiza la capacidad disponible del vehículo.
+     * Se usa cuando se registra un viaje y hay que restar un lugar.
+     *
+     * @param capacidadDisponible nuevo valor disponible
+     */
 
     public void setCapacidadDisponible(int capacidadDisponible) {
         this.capacidadDisponible = capacidadDisponible;

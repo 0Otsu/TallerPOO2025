@@ -1,3 +1,6 @@
+/**
+ * Representa una ciudad dentro del sistema, asociada a una provincia.
+ */
 public class Ciudad {
     private final String nombre;
     private final Provincia provincia;

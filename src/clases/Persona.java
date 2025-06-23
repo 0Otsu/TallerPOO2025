@@ -1,3 +1,7 @@
+/**
+ * Clase base que representa una persona con nombre, apellido y DNI.
+ * Es extendida por la clase Chofer.
+ */
 public abstract class Persona {
     private final long dni;
     private final String nombre;
@@ -22,6 +26,6 @@ public abstract class Persona {
     }
 
     @Override
-    public abstract String toString(); 
+    public abstract String toString();
 
 }

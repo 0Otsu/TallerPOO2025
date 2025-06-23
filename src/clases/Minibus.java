@@ -1,3 +1,7 @@
+/**
+ * Representa un minibus con atributos adicionales como disponibilidad de bodega
+ * y aire acondicionado.
+ */
 public class Minibus extends Vehiculo {
     private final boolean bodega;
     private final boolean aireAcondicionado;
