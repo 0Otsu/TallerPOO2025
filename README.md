@@ -17,6 +17,9 @@ Este proyecto simula un sistema de gestión de viajes, choferes y vehículos, de
 
 Estructura del proyecto
 
+### Estructura del proyecto
+
+```plaintext
 TallerPOO2025/
 │
 ├── src/
